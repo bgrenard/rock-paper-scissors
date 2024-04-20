@@ -55,9 +55,11 @@ function playGame() {
 }
 
 const buttons = document.querySelectorAll('button');
+const roundInfo = document.querySelector('#round-info');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        console.log(playRound(button.id, getComputerChoice()))
+        let result = playRound(button.id, getComputerChoice());
+        roundInfo.textContent = result;
     })
 })
