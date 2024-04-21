@@ -69,5 +69,17 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
         let result = playRound(button.id, getComputerChoice());
         roundInfo.textContent = result;
+        if (computerScore === 5) {
+            const body = document.querySelector('body');
+            const endGameText = document.createElement("div");
+            endGameText.textContent = "You Lose!"
+            body.appendChild(endGameText);
+        }
+        else if (playerScore === 5) {
+            const body = document.querySelector('body');
+            const endGameText = document.createElement("div");
+            endGameText.textContent = "You Win!"
+            body.appendChild(endGameText);
+        }
     })
 })
