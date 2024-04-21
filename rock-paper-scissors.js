@@ -1,3 +1,10 @@
+let playerScore = 0;
+let computerScore = 0;
+
+const buttons = document.querySelectorAll('button');
+const roundInfo = document.querySelector('#round-info');
+const scoreInfo = document.querySelector('#score');
+
 function getComputerChoice() {
     let choices = ["Paper", "Rock", "Scissors"];
     let randIndex = Math.floor( Math.random()*3 );
@@ -17,9 +24,13 @@ function playRound(playerSelection, computerSelection) {
             playerCapitalized === "Paper" && computerSelection === "Scissors" ||
             playerCapitalized === "Scissors" && computerSelection === "Rock"
         ) {
+        computerScore += 1;
+        scoreInfo.textContent = `Score: ${playerScore} to ${computerScore}.`
         return `You Lose! ${computerSelection} beats ${playerCapitalized}.`
     }
     else {
+        playerScore += 1;
+        scoreInfo.textContent = `Score: ${playerScore} to ${computerScore}.`
         return `You Win! ${playerCapitalized} beats ${computerSelection}.`
     }
 }
@@ -53,9 +64,6 @@ function playGame() {
     }
     
 }
-
-const buttons = document.querySelectorAll('button');
-const roundInfo = document.querySelector('#round-info');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
